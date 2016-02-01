@@ -1,7 +1,5 @@
 package com.ebusiello.algorithms.quick.union;
 
-import java.util.ArrayList;
-
 /**
  * http://algs4.cs.princeton.edu/15uf/
  *
@@ -10,32 +8,32 @@ import java.util.ArrayList;
  */
 public class QuickUnion {
 
-    private ArrayList<Integer> nodes = new ArrayList<Integer>();
-    private int nodesSize = nodes.size();
+    private Integer[] nodes;
+    private Integer nodesSize;
 
     public QuickUnion(int size) {
+        nodesSize = size;
         for (int i = 0; i < size; i++) {
             insert(i);
         }
     }
 
     public void insert(int i) {
-        nodes.add(i);
-        nodesSize = nodesSize + 1;
+        nodes[i] = i;
     }
 
     public boolean union(int i1, int i2) {
         if(isConnected(i1, i2)) return true;
         else if(isIndexValid(i1) && isIndexValid(i2)) {
             // change only the root of the tree in the array.
-            nodes.set(findRoot(i1), findRoot(i2));
+            nodes[findRoot(i1)] = findRoot(i2);
             return true;
         }
         else return false;
     }
 
     private Integer findRoot(int i) {
-        Integer ind = nodes.get(i);
+        Integer ind = nodes[i];
         if(ind.equals(i)) return i;
         else return findRoot(ind);
     }
