@@ -1,4 +1,4 @@
-package com.ebusiello.algorithms.quick.union;
+package com.ebusiello.algorithms;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;

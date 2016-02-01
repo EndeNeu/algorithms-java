@@ -1,19 +1,13 @@
-package com.ebusiello.algorithms.quick.union;
+package com.ebusiello.algorithms.quick.find;
 
 import java.util.ArrayList;
 
-/**
- * http://algs4.cs.princeton.edu/15uf/
- *
- * Instead of changing all the element in the array, build a tree like structure
- * so that only the root must be changed.
- */
-public class QuickUnion {
+public class QuickFind {
 
     private ArrayList<Integer> nodes = new ArrayList<Integer>();
     private int nodesSize = nodes.size();
 
-    public QuickUnion(int size) {
+    public QuickFind(int size) {
         for (int i = 0; i < size; i++) {
             insert(i);
         }
@@ -27,17 +21,17 @@ public class QuickUnion {
     public boolean union(int i1, int i2) {
         if(isConnected(i1, i2)) return true;
         else if(isIndexValid(i1) && isIndexValid(i2)) {
-            // change only the root of the tree in the array.
-            nodes.set(findRoot(i1), findRoot(i2));
+            // store the values at the indexes we want to change
+            Integer i1Value = nodes.get(i1);
+            Integer i2Value = nodes.get(i2);
+            for (int i = 0; i < nodesSize; i++) {
+                // if the value at position i is the same as the one at position i1
+                // we need to change it with the value at index i2.
+                if(nodes.get(i).equals(i1Value)) nodes.set(i, i2Value);
+            }
             return true;
         }
         else return false;
-    }
-
-    private Integer findRoot(int i) {
-        Integer ind = nodes.get(i);
-        if(ind.equals(i)) return i;
-        else return findRoot(ind);
     }
 
     private boolean isIndexValid(int i) {
@@ -45,7 +39,7 @@ public class QuickUnion {
     }
 
     public boolean isConnected(int i1, int i2) {
-        return isIndexValid(i1) && isIndexValid(i2) && findRoot(i1).equals(findRoot(i2));
+        return isIndexValid(i1) && isIndexValid(i2) && nodes.get(i1).equals(nodes.get(i2));
     }
 
 }
