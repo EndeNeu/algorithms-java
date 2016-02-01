@@ -1,4 +1,4 @@
-package com.ebusiello.quick.union.matrix;
+package com.ebusiello.algorithms.quick.union;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,5 @@
-package com.ebusiello.quick.union;
+package com.ebusiello.algorithms.quick.union;
 
-import com.ebusiello.quick.union.matrix.QuickUnion;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
