@@ -2,12 +2,12 @@ package com.ebusiello.algorithms.quick.find;
 
 public class QuickFind {
 
-    private Integer[] nodes;
-    private Integer nodesSize = null;
+    private int[] nodes;
+    private int nodesSize;
 
     public QuickFind(int size) {
         nodesSize = size;
-        nodes = new Integer[size];
+        nodes = new int[size];
         for (int i = 0; i < size; i++) {
             insert(i);
         }
@@ -21,12 +21,12 @@ public class QuickFind {
         if(isConnected(i1, i2)) return true;
         else if(isIndexValid(i1) && isIndexValid(i2)) {
             // store the values at the indexes we want to change
-            Integer i1Value = nodes[i1];
-            Integer i2Value = nodes[i2];
+            int i1Value = nodes[i1];
+            int i2Value = nodes[i2];
             for (int i = 0; i < nodesSize; i++) {
                 // if the value at position i is the same as the one at position i1
                 // we need to change it with the value at index i2.
-                if(nodes[i].equals(i1Value)) nodes[i] = i2Value;
+                if(nodes[i] == i1Value) nodes[i] = i2Value;
             }
             return true;
         }
@@ -38,7 +38,7 @@ public class QuickFind {
     }
 
     public boolean isConnected(int i1, int i2) {
-        return isIndexValid(i1) && isIndexValid(i2) && nodes[i1].equals(nodes[i2]);
+        return isIndexValid(i1) && isIndexValid(i2) && nodes[i1] == nodes[i2];
     }
 
 }

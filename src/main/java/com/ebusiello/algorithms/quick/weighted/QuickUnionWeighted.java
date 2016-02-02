@@ -8,13 +8,13 @@ package com.ebusiello.algorithms.quick.weighted;
  */
 public class QuickUnionWeighted {
 
-    private Integer[] nodes;
-    private Integer nodesSize;
-    private Integer[] sizes;
+    private int[] nodes;
+    private int nodesSize;
+    private int[] sizes;
 
     public QuickUnionWeighted(int size) {
-        sizes = new Integer[size];
-        nodes = new Integer[size];
+        sizes = new int[size];
+        nodes = new int[size];
         nodesSize = size;
         for (int i = 0; i < size; i++) {
             insert(i);
@@ -45,9 +45,9 @@ public class QuickUnionWeighted {
         else return false;
     }
 
-    private Integer findRoot(int i) {
-        Integer ind = nodes[i];
-        if(ind.equals(i)) return i;
+    private int findRoot(int i) {
+        int ind = nodes[i];
+        if(ind == i) return i;
         else return findRoot(ind);
     }
 
@@ -56,7 +56,7 @@ public class QuickUnionWeighted {
     }
 
     public boolean isConnected(int i1, int i2) {
-        return isIndexValid(i1) && isIndexValid(i2) && findRoot(i1).equals(findRoot(i2));
+        return isIndexValid(i1) && isIndexValid(i2) && findRoot(i1) == findRoot(i2);
     }
 
 }

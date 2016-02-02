@@ -8,12 +8,12 @@ package com.ebusiello.algorithms.quick.union;
  */
 public class QuickUnion {
 
-    private Integer[] nodes;
-    private Integer nodesSize;
+    private int[] nodes;
+    private int nodesSize;
 
     public QuickUnion(int size) {
         nodesSize = size;
-        nodes = new Integer[size];
+        nodes = new int[size];
         for (int i = 0; i < size; i++) {
             insert(i);
         }
@@ -33,9 +33,9 @@ public class QuickUnion {
         else return false;
     }
 
-    private Integer findRoot(int i) {
-        Integer ind = nodes[i];
-        if(ind.equals(i)) return i;
+    private int findRoot(int i) {
+        int ind = nodes[i];
+        if(ind == i) return i;
         else return findRoot(ind);
     }
 
@@ -44,7 +44,7 @@ public class QuickUnion {
     }
 
     public boolean isConnected(int i1, int i2) {
-        return isIndexValid(i1) && isIndexValid(i2) && findRoot(i1).equals(findRoot(i2));
+        return isIndexValid(i1) && isIndexValid(i2) && findRoot(i1) == findRoot(i2);
     }
 
 }
