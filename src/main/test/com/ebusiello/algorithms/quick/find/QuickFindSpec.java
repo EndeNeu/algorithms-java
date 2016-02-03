@@ -31,6 +31,5 @@ public class QuickFindSpec {
         assertEquals("8 and 9 should be connected", qu.isConnected(8,9), true);
         assertEquals("0 and 7 should be connected", qu.isConnected(0,7), true);
         assertEquals("5 and 7 should be connected", qu.isConnected(5,7), true);
-
     }
 }
