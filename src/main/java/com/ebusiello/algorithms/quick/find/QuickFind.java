@@ -9,14 +9,13 @@ public class QuickFind {
         nodesSize = size;
         nodes = new int[size];
         for (int i = 0; i < size; i++) {
-            insert(i);
+            nodes[i] = i;
         }
     }
 
-    public void insert(int i) {
-        nodes[i] = i;
-    }
-
+    /**
+     * Change all the values equal to the one at position i to the value at position j
+     */
     public boolean union(int i1, int i2) {
         if(isConnected(i1, i2)) return true;
         else if(isIndexValid(i1) && isIndexValid(i2)) {
@@ -37,6 +36,9 @@ public class QuickFind {
         return i >= 0 && i < nodesSize;
     }
 
+    /**
+     * If two nodes are connected the will have the same value in the array
+     */
     public boolean isConnected(int i1, int i2) {
         return isIndexValid(i1) && isIndexValid(i2) && nodes[i1] == nodes[i2];
     }

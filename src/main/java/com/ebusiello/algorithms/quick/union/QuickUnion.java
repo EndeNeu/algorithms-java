@@ -33,6 +33,9 @@ public class QuickUnion {
         }
     }
 
+    /**
+     * Iterate the array until the root is found.
+     */
     private int findRoot(int i) {
         int ind = nodes[i];
         // if the index is equal to the element at that index it means it is the root of itself
@@ -45,6 +48,9 @@ public class QuickUnion {
         return i >= 0 && i < nodesSize;
     }
 
+    /**
+     * Two nodes are connected if the have the same root int he tree
+     */
     public boolean isConnected(int i1, int i2) {
         return isIndexValid(i1) && isIndexValid(i2) && findRoot(i1) == findRoot(i2);
     }
